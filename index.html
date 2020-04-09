@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadline</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <style>
+        *{
+            /* background-color: #999999;
+            color: #fff; */
+            padding: 20px auto;
+        }
+        button{
+            margin: 7px 0;
+            padding: 7px; cursor: pointer;
+        }
+        .red_border{
+            border: 3px solid red;
+        }
+        .hidden{
+            display: none;
+        }
+        .eye{
+            cursor: pointer;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+   <form action="" method="POST">
+    <div class="form-control">
+        <div>Username</div>
+        <input type="text" name="" id="tien_1" placeholder="Nhap ten">
+        <div class="hidden" id="error_1_1">Vui lòng nhập tên</div>
+    </div>
+    <div class="form-control">
+        <div>Password</div>
+        <input type="password" name="" id="tien_2" placeholder="Nhập mật khẩu"><div class="eye" onclick="check_eye()"><i class="fas fa-eye"></i></div>
+        <div class="hidden" id="error_2_1">Vui lòng nhập mật khẩu</div> 
+    </div>
+    <input type="checkbox" name="" id="tien_4"> Ghi nhớ mật khẩu 
+    <!-- <div> <input type="checkbox" name="" id="ghi_nho"> Ghi nhớ tên đăng nhập và mật khẩu</div> -->
+    <!-- <button type="" class="btn btn-danger" onclick="return check()">Đăng nhập</button> -->
+    <button id="submit">Lưu mật khẩu</button>
+
+    <div id="test"></div>
+</form>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- <script src="javascript/validate.js"></script> -->
+    <script >
+        $('#submit').click(function (e) { 
+            // alert('Alo');
+            var _tien_1= $('#tien_1').val();
+            if($('#tien_4').is(':checked')){
+                localStorage.setItem('name',_tien_1);
+            }
+            else{
+                alert("Not OKI");
+            }
+        });
+        if (('localStorage' in window)&& window['localStorage'] !== null){
+            var name = localStorage.getItem('name');
+            $('#tien_1').val(name);
+        }
+    </script>
+</body>
+</html>
